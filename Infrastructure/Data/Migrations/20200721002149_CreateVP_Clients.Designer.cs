@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(ClientContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200721002149_CreateVP_Clients")]
     partial class CreateVP_Clients
     {

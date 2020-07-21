@@ -8,7 +8,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Infrastructure.Data.Migrations
 {
-    [DbContext(typeof(ClientContext))]
+    [DbContext(typeof(ApplicationDbContext))]
     [Migration("20200720212532_CreateClientsTable")]
     partial class CreateClientsTable
     {

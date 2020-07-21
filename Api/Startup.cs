@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ApplicationCore;
 using ApplicationCore.Interfaces.Db;
+using Infrastructure;
 using Infrastructure.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -31,10 +33,13 @@ namespace Api
         {
             services.AddControllers();
 
-            services.AddDbContext<ClientContext>(options => 
-                options.UseNpgsql(Configuration.GetConnectionString("DevelopmentConnection")));
+            services.AddInfrastructureConfig(Configuration);
+            services.AddApplicationConfig();
 
-            services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
+            //services.AddDbContext<ClientContext>(options => 
+            //    options.UseNpgsql(Configuration.GetConnectionString("DevelopmentConnection")));
+
+            //services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

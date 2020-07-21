@@ -12,7 +12,7 @@ namespace IntegrationTests.Repositories.ClientRepositoryTests
 {
     public class GetCpf
     {
-        private ClientContext _clientContext;
+        private ApplicationDbContext _clientContext;
         private IAsyncRepository<Client> _clientRepository;
 
 
@@ -24,11 +24,11 @@ namespace IntegrationTests.Repositories.ClientRepositoryTests
         [Test]
         public async Task Test1()
         {
-            var dbOptions = new DbContextOptionsBuilder<ClientContext>()
+            var dbOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
                 .UseInMemoryDatabase(databaseName: "TestClient")
                 .Options;
 
-            _clientRepository = new ClientRepository(new ClientContext(dbOptions));
+            _clientRepository = new ClientRepository(new ApplicationDbContext(dbOptions));
             var clientFromRepo = await _clientRepository.GetByIdAsync(1);
 
             Assert.AreEqual(clientFromRepo, null);
